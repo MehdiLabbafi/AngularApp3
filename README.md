@@ -58,4 +58,8 @@ The MySQL table `books` includes the following fields:
 - All books data will be stored in the MySQL `books` table, and the API must be accessed through the `http://localhost/BookManagerAPI/` URL.
 - The cover images are expected to be uploaded to an `uploads/` directory inside `BookManagerAPI`.
 
+  ## Contributors
+
+- **Mehdi Labbafi** - Developer and creator of the project.
+
 
