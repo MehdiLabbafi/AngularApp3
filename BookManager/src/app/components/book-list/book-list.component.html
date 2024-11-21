@@ -1,0 +1,46 @@
+<h2>Book List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td><img [src]="book.coverImage" alt="Cover" class="book-cover" *ngIf="book.coverImage; else defaultCover" /></td>
+      <ng-template #defaultCover>
+        <img src="assets/default-cover.jpg" alt="Default Cover" class="book-cover" />
+      </ng-template>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.genre }}</td>
+      <td>{{ book.price | currency:'USD':'symbol':'1.2-2' }}</td>
+      <td>{{ book.rating }}</td>
+      <td>
+        <button class="btn btn-edit" (click)="editBook(book)">Edit</button>
+        <button class="btn btn-delete" (click)="deleteBook(book.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Add a New Book</h2>
+<form class="add-book-form" (ngSubmit)="addBook()" enctype="multipart/form-data">
+  <input type="text" [(ngModel)]="newBook.title" name="title" placeholder="Title" required />
+  <input type="text" [(ngModel)]="newBook.author" name="author" placeholder="Author" required />
+  <input type="text" [(ngModel)]="newBook.genre" name="genre" placeholder="Genre" />
+  <input type="number" [(ngModel)]="newBook.price" name="price" placeholder="Price" min="0" step="0.01" />
+  <input type="number" [(ngModel)]="newBook.rating" name="rating" placeholder="Rating" min="0" max="5" step="0.1" />
+  <input type="file" (change)="onFileSelected($event)" name="coverImage" />
+  <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+<footer>
+  <p>The Best Pastime in the World is Reading</p>
+</footer>

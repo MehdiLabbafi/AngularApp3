@@ -1,0 +1,22 @@
+.filter-sort {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filter-sort label {
+    margin-right: 15px;
+  }
+  
+  .filter-sort select,
+  .filter-sort input[type="checkbox"] {
+    margin-left: 5px;
+  }
+
+  .book-cover {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+    margin-right: 10px;
+  }

@@ -1,0 +1,35 @@
+.animated-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #282c34;
+    padding: 3px 0;
+  }
+  
+  .animated-footer p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    animation: colorChange 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    margin: 0;
+  }
+  
+  /* Animation for color change */
+  @keyframes colorChange {
+    0% { color: #ff9900; }
+    25% { color: #ff33cc; }
+    50% { color: #33ccff; }
+    75% { color: #33ff66; }
+    100% { color: #ff9900; }
+  }
+  
+  /* Animation for glow effect */
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+    }
+    to {
+      text-shadow: 0 0 10px #33ccff, 0 0 20px #33ccff, 0 0 30px #33ccff;
+    }
+  }

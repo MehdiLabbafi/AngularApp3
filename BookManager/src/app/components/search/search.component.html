@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Search Books</h2>
+  
+  <input
+    type="text"
+    placeholder="Search by title or author"
+    [(ngModel)]="searchQuery"
+    (input)="updateBooksList()"
+  />
+
+<!-- filter by category and sort -->
+  <div class="filter-sort">
+    <label>
+      Genre:
+      <select [(ngModel)]="selectedGenre" (change)="updateBooksList()">
+        <option *ngFor="let genre of getGenres()" [value]="genre">{{ genre }}</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="sortByRating" (change)="updateBooksList()" /> Sort by Rating
+    </label>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Cover</th> <!-- new column for cover image -->
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of searchBooks()">
+        <td>
+          <img *ngIf="book.coverImage" [src]="book.coverImage" alt="Book Cover" class="book-cover" />
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.rating }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
