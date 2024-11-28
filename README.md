@@ -1,4 +1,52 @@
 # AngularApp3
+# Assignment 6
+
+### Adding Cover Images to Books in BookManager Project
+
+In the latest version of the BookManager project, we have added functionality for uploading and displaying book cover images. Below, I have outlined the key changes made to support this feature.
+
+#### Backend (PHP) Updates
+1. **`upload_image.php` Endpoint**: A new PHP file (`upload_image.php`) has been created to handle image uploads. This file processes the incoming image from the Angular frontend and saves it to a designated folder (`uploads/`).
+   - The uploaded file is checked for errors before being moved to the `uploads/` directory.
+   - The file path is then stored in the database.
+
+2. **Modified `books.php`**: Updates were made to `books.php` to handle the image paths properly:
+   - When fetching books from the database, the full URL path of the image is generated to ensure it is displayed correctly in the frontend.
+   - During the addition of new books, the uploaded image's file name is stored in the `coverImage` field of the database.
+
+#### Frontend (Angular) Updates
+1. **Form Update for Book Addition**:
+   - In the `BookListComponent`, a new input type (`file`) has been added to allow users to select a cover image when adding a new book.
+   - A new method (`onFileSelected`) handles the file selection and prepares it for uploading.
+
+2. **Image Upload with FormData**:
+   - When adding a new book, the selected file is uploaded to the server using `FormData`. The file is then processed by `upload_image.php` on the backend and the resulting file path is saved in the database.
+
+3. **Displaying Cover Images**:
+   - In the book list view (`book-list.component.html`), the cover image is displayed using the URL generated from the backend. If no image is provided, a default image is displayed.
+
+#### Database Changes
+- The `books` table now includes a `coverImage` column to store the file name of the uploaded image.
+
+#### Example Usage
+1. **Adding a Book with a Cover Image**:
+   - Go to the 'Add a New Book' section.
+   - Fill in the book details and select an image file.
+   - Click 'Add Book' to upload the image and save the book.
+
+2. **Viewing Book Covers**:
+   - Uploaded book covers are visible in the book list view.
+   - If no cover image is uploaded, a default placeholder image is displayed.
+
+These updates allow for a more visually appealing and comprehensive user experience by enabling users to associate images with their books.
+
+ ## Contributors
+
+- **Mehdi Labbafi** - Developer and creator of the project.
+
+
+
+
 # Assignment 5
 
 ## Backend API (PHP) for BookManager Project
